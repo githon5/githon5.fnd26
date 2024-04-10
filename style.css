@@ -1,15 +1,46 @@
-h1 {
+header {
+  background-attachment: fixed;
+  background-color: aquamarine;
+}
+
+footer {
+  background-attachment: fixed;
+  background-color: aquamarine;
+}
+
+
+h2 {
   color: blue;
 }
+
 div {
-  background-color: yellow;
+  border: 0;
 }
-.awesome {
+.ctd {
   font-weight: bold;
+  background-color:  rgb(127, 253, 255);
+  border: 0;
 }
 .great {
   font-weight: bold;
 }
 #d {
   color: red;
+}
+td {
+  border: 1px solid;
+}
+
+table {
+  width: 100%;
+  max-width: 400px;
+  height: 240px;
+  margin: 30px;
+  display: block;
+  /* overflow-x: auto; */
+  border-spacing: 4;
+}
+
+tbody {
+  white-space: nowrap;
 }
