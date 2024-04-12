@@ -8,6 +8,12 @@ footer {
   background-color: aquamarine;
 }
 
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
 
 h2 {
   color: blue;
