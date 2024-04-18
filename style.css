@@ -21,6 +21,7 @@ h2 {
 
 div {
   border: 0;
+  align-self:auto;
 }
 .ctd {
   font-weight: bold;
