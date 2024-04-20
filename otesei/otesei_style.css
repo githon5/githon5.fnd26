@@ -1,3 +1,23 @@
+header {
+  background-attachment:local;
+  background-color:aquamarine;
+  margin-top: 10px;
+}
+
+
 body {
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#loginUserIcon {
+  vertical-align: middle;
+  align-content: end;
+}
+
+.otetuList {
+  font-size: 1.2rem;
+  margin-left: 10%;
+  margin-right: 10%;
+  align-items: center;
+  text-align: center;
 }
