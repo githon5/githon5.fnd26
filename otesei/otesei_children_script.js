@@ -48,6 +48,14 @@ for (const key in otetudai) {
 }
 
 
+export const loginInfo = {
+  userID: "101",
+  Name: "Honda",
+  Fampr: "parents",
+};
+
+
+
 
 
 

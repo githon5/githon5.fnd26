@@ -17,3 +17,7 @@ elImgTagUserIcon.innerHTML = `<img src="otesei_img/` + username + `.png" height=
 
 // 3. 追記は「 += 」
 elImgTagUserIcon.innerHTML += "<br>";
+
+
+import {loginInfo} from "./otesei_children_script.js";
+console.log(loginInfo);
