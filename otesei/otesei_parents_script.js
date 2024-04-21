@@ -38,7 +38,7 @@ let takatoSentKeys = [];
 const elRecieveListHaruki = document.getElementById("elRecieveListHaruki"); //ID名の要素取得
 for (const key in harukiSent) {
   let username = "haruki";
-  if (harukiSent[key][2] !== 0) {
+  for (let k = 1; k <= harukiSent[key][2]; k++) { //実施回数が1以上の場合のみ、実施回数分keyをリストに追加
     harukiSentKeys.push(key); //受信した実施お手伝いkeyのリスト作成
   }
   let otetudaiName = harukiSent[key][0];
@@ -55,7 +55,7 @@ for (const key in harukiSent) {
 const elRecieveListTakato = document.getElementById("elRecieveListTakato"); //ID名の要素取得
 for (const key in takatoSent) {
   let username = "takato";
-  if (takatoSent[key][2] !== 0) {
+  for (let k = 1; k <= takatoSent[key][2]; k++) { //実施回数が1以上の場合のみ、実施回数分keyをリストに追加
     takatoSentKeys.push(key); //受信した実施お手伝いkeyのリスト作成
   }
   let otetudaiName = takatoSent[key][0];
@@ -71,13 +71,27 @@ for (const key in takatoSent) {
 }
 
 //現在ポイント
-//★最初期　現在ポイント：NaNになってしまう時はブラウザコンソール上でharukiPointNow = 0;で初期化する必要あり。
-//localStorageは収納時に文字列に変換されてしまうので、parseInt()で文字列⇒数字変換
-const elDispPointNowH = document.getElementById("harukiDispPointNow");
-elDispPointNowH.innerText = parseInt(localStorage.getItem("harukiPointStr"));
-const elDispPointNowT = document.getElementById("takatoDispPointNow");
-elDispPointNowT.innerText = parseInt(localStorage.getItem("takatoPointStr"));
+function dispNowPoint() {
+  //★最初期　現在ポイント：NaNになってしまう時はブラウザコンソール上でharukiPointNow = 0;で初期化する必要あり。
+  //localStorageは収納時に文字列に変換されてしまうので、parseInt()で文字列⇒数字変換
+  const elDispPointNowH = document.getElementById("harukiDispPointNow");
+  elDispPointNowH.innerText = parseInt(localStorage.getItem("harukiPointStr"));
+  const elDispPointNowT = document.getElementById("takatoDispPointNow");
+  elDispPointNowT.innerText = parseInt(localStorage.getItem("takatoPointStr"));
+}
+dispNowPoint();
 
+//「リセット」ボタン押下時
+const elButtonHarukiResetPushed = document.getElementById("harukiButtonOfReset");
+elButtonHarukiResetPushed.addEventListener("click", () => {
+  localStorage.setItem("harukiPointStr", 0);
+  dispNowPoint();
+});
+const elButtonTakatoResetPushed = document.getElementById("takatoButtonOfReset");
+elButtonTakatoResetPushed.addEventListener("click", () => {
+  localStorage.setItem("takatoPointStr", 0);
+  dispNowPoint();
+});
 
 //「←承認」ボタン押下時
 let userPointNow;
@@ -111,8 +125,7 @@ function syounin(nameIn) {
       }
       let keyOfPoint = arrKeyOfPoint[i]; //押下した「承認」ボタンのotetudaiオブジェクトのkey
       console.log(userSentObj[keyOfPoint]); //押下した「承認」ボタンの受信リストの中のエレメント[項目,ポイント,回数]
-      console.log(userSentObj[keyOfPoint][1]);
-      userPointNow += userSentObj[keyOfPoint][1];
+      userPointNow += userSentObj[keyOfPoint][1]; //実施お手伝いのポイントをプラス
       if (nameIn === "haruki") {
         localStorage.setItem("harukiPointStr", userPointNow);
         const elDispPointNowH = document.getElementById("harukiDispPointNow");
@@ -130,35 +143,36 @@ function syounin(nameIn) {
 syounin("haruki");
 syounin("takato");
 
-// // //はるき分
-// for (let j = 0; j < numH; j++) {
-//   let buttonIdHj = `buttonH${j}`
-//   const elButtonPushed = document.getElementById(buttonIdHj);
-//   elButtonPushed.addEventListener("click", () => {
-//     let keyOfPoint = `otetudai00${j}`;
-//     console.log(harukiSent[keyOfPoint][1]);
-//     harukiPointNow += harukiSent[keyOfPoint][1];
-//     console.log("はるき現在ポイント：" + harukiPointNow);
-//     //localStorageはオブジェクト保存できず[object Object]となってしまうので、文字列に変換して収納
-//     const harukiPointNowJSONData = JSON.stringify(harukiPointNow);
-//     localStorage.setItem("harukiPointStr", harukiPointNowJSONData);
-//   });
-// }
 
-// //たかと分
-// for (let j = 0; j < numT; j++) {
-//   let buttonIdTj = `buttonT${j}`
-//   const elButtonPushed = document.getElementById(buttonIdTj);
-//   elButtonPushed.addEventListener("click", () => {
-//     let keyOfPoint = `otetudai00${j}`;
-//     console.log(takatoSent[keyOfPoint][1]);
-//     takatoPointNow += takatoSent[keyOfPoint][1];
-//     console.log("たかと現在ポイント：" + takatoPointNow);
-//     //localStorageはオブジェクト保存できず[object Object]となってしまうので、文字列に変換して収納
-//     const takatoPointNowJSONData = JSON.stringify(takatoPointNow);
-//     localStorage.setItem("takatoPointStr", takatoPointNowJSONData);
-//   });
-// }
+//しつけ
+//optionは選択肢が選択されたときにサーバーに送信するデータの値を含むvalue属性を持ちます。value属性が含まれない場合、
+//既定で要素の中に含まれるテキストの値が使用されます。
+const elShitukeDo = document.getElementById("elShituke");
+elShitukeDo.innerHTML += `
+<select id="selUsername">
+  <option value="harukiPointStr">はるき</option>
+  <option value="takatoPointStr">たかと</option>
+</select>　
+<select id="selShituke">
+  <option value="shituke000">${shituke["shituke000"][0]}</option>
+  <option value="shituke001">${shituke["shituke001"][0]}</option>
+  <option value="shituke002">${shituke["shituke002"][0]}</option>
+  <option value="shituke003">${shituke["shituke003"][0]}</option>
+  <option value="shituke004">${shituke["shituke004"][0]}</option>
+  <option value="shituke005">${shituke["shituke005"][0]}</option>
+</select>　<input type="button" id="buttonShitukeExe" value="←しつけ実施">`;
 
 
+//「しつけ実施」ボタン押下時
 
+const elButtonShitukePushed = document.getElementById("buttonShitukeExe");
+elButtonShitukePushed.addEventListener("click", () => {
+  //しつけ対象ユーザー選択
+  const elSelUsername = document.getElementById("selUsername");
+  let targetUserPointStr = elSelUsername.value;
+  //「しつけ実施」ボタン押下でポイント演算
+  let shitukeKey = document.getElementById("selShituke").value;
+  let minusPointed = parseInt(localStorage.getItem(targetUserPointStr)) + shituke[shitukeKey][1];
+  localStorage.setItem(targetUserPointStr, minusPointed);
+  dispNowPoint();
+});

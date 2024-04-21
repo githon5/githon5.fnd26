@@ -59,3 +59,12 @@ const otetudai = { //[お手伝い名, ポイント単価, 実施回数]
 //現在ポイント
 let harukiPoint = 0;
 let takatoPoint = 0;
+
+const shituke = { //[しつけ名, ポイント単価]
+  shituke000: ["◆しつけ項目を選択◆",       0],
+  shituke001: ["片付けできていない",       -50],
+  shituke002: ["時間が守れていない",       -50],
+  shituke003: ["交通ルールが守れていない", -50],
+  shituke004: ["静かにできない",           -30],
+  shituke005: ["他人に優しくできない",    -100],
+}

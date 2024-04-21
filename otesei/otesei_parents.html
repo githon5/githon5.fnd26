@@ -14,22 +14,36 @@
     <span id="loginUserName"></span> <span id="loginUserIcon"></span>
   </header>
   <div>
+    <h2>【現在ポイント】</h2>
+    <center><font size="5">
+      はるき　現在ポイント：<span id="harukiDispPointNow"></span>　　　たかと　現在ポイント：<span id="takatoDispPointNow"></span>
+    </font></center>
+  </div>
+  <div>
+    <center>
+      <input type="button" id="harukiButtonOfReset" value="『はるき』ポイントリセット">　　　　　　　　
+      <input type="button" id="takatoButtonOfReset" value="『たかと』ポイントリセット">
+    </center>
+  </div>
+  <hr>
+  <div>
     <h2>【おてつだい受信リスト】</h2>
-    <hr width="80%">
-    <div id="elRecieveListHaruki" class="otetuList">▽▽▽▽▽▽　はるき　現在ポイント：<span id="harukiDispPointNow"></span>▽▽▽▽▽▽</div>  <!-- ←お手伝い受信リスト挿入先 -->
+    <div id="elRecieveListHaruki" class="otetuList">▽▽▽　はるき　▽▽▽</div>  <!-- ←お手伝い受信リスト挿入先 -->
     <br>
     <hr width="80%">
-    <div id="elRecieveListTakato" class="otetuList">▽▽▽▽▽▽　たかと　現在ポイント：<span id="takatoDispPointNow"></span>▽▽▽▽▽▽</div>  <!-- ←お手伝い受信リスト挿入先 -->
+    <div id="elRecieveListTakato" class="otetuList">▽▽▽　たかと　▽▽▽</div>  <!-- ←お手伝い受信リスト挿入先 -->
     <hr>
   </div>
   <div>
     <h2>【しつけ】</h2>
+    <center>
+      <div id="elShituke"></div>  <!-- ←しつけ挿入先 -->
+    </center>
+  </div>
+  <hr>
   </div>
   <BR>
   <a href="otesei_index.html"><img src="otesei_img/icon_modoru.png" height="50"></a>
-  <!-- <script type="module">
-    import {loginInfo} from "./otesei_chldren_script.js";
-  </script> -->
   <script type="text/javascript" src="otesei_parents_script.js"></script>
 </body>
 
