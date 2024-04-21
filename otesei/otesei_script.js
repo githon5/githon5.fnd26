@@ -17,14 +17,14 @@ function test(actual, expected) {
 //harukiログインボタンが押された時
 document.getElementById("btnHaruki").addEventListener("click", function(event) {
   const username = "haruki";
-  sessionStorage.setItem('username', username);
+  localStorage.setItem('username', username);
   location.href = "otesei_children.html";
 });
 
 //Takatoログインボタンが押された時
 document.getElementById("btnTakato").addEventListener("click", function(event) {
   const username = "takato";
-  sessionStorage.setItem('username', username);
+  localStorage.setItem('username', username);
   location.href = "otesei_children.html";
 });
 
@@ -52,14 +52,14 @@ function dispDiag(){
 //mamaログインボタンが押された時
 document.getElementById("btnMama").addEventListener("click", function(event) {
   const username = "mama";
-  sessionStorage.setItem('username', username);
+  localStorage.setItem('username', username);
   dispDiag();
 });
 
 //papaログインボタンが押された時
 document.getElementById("btnPapa").addEventListener("click", function(event) {
   const username = "papa";
-  sessionStorage.setItem('username', username);
+  localStorage.setItem('username', username);
   dispDiag();
 });
 

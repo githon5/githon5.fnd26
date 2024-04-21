@@ -46,12 +46,16 @@ const parentsPwd = {
   Password: "pass123",
 };
 
-const otetudai = {
-  otetudai001:["窓ふき（１枚）", 30],
-  otetudai002:["トイレ掃除１F", 100],
-  otetudai003:["トイレ掃除２F", 100],
-  otetudai004:["お風呂掃除", 100],
-  otetudai005:["洗濯物干し", 100],
-  otetudai006:["床拭き", 100],
-  otetudai007:["お使い", 100],
+const otetudai = { //[お手伝い名, ポイント単価, 実施回数]
+  otetudai000:["窓ふき（１枚）", 30, 0],
+  otetudai001:["トイレ掃除１F", 100, 0],
+  otetudai002:["トイレ掃除２F", 100, 0],
+  otetudai003:["お風呂掃除",    100, 0],
+  otetudai004:["洗濯物干し",    100, 0],
+  otetudai005:["床拭き",        100, 0],
+  otetudai006:["お使い",        100, 0],
 }
+
+//現在ポイント
+let harukiPoint = 0;
+let takatoPoint = 0;
